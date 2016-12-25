@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 
-import Task from './task.jsx';
+import Log from './log.jsx';
 
 // App component - represents the whole app
 export default class App extends Component {
-  getTasks() {
+  getLogs() {
     return [
-      { _id: 1, text: 'This is task 1' },
-      { _id: 2, text: 'This is task 2' },
-      { _id: 3, text: 'This is task 3' },
+      { _id: 1, text: 'You are in a dark tomb.' },
+      { _id: 2, text: 'The air is damp.' },
+      { _id: 3, text: 'A skeleton is here.' },
     ];
   }
 
-  renderTasks() {
-    return this.getTasks().map((task) => (
-      <Task key={task._id} task={task} />
+  renderLogs() {
+    return this.getLogs().map((log) => (
+      <Log key={log._id} text={log.text} />
     ));
   }
 
   render() {
     return (
-      <div className="container">
-        <header>
-          <h1>Todo List</h1>
-        </header>
+      <div className="background">
+        <div className="console-screen">
+          <ul>
+            {this.renderLogs()}
+          </ul>
 
-        <ul>
-          {this.renderTasks()}
-        </ul>
+          <input type="text" className="console-input"></input>
+        </div>
       </div>
     );
   }
