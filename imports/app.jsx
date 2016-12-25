@@ -22,7 +22,7 @@ export default class App extends Component {
     return (
       <div className="background">
         <div className="console-screen">
-          <ul>
+          <ul className="console-logs">
             {this.renderLogs()}
           </ul>
 
