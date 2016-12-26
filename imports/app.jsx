@@ -2,20 +2,26 @@ import React, { Component } from 'react';
 
 import Log from './log.jsx';
 
-// App component - represents the whole app
 export default class App extends Component {
-  getLogs() {
-    return [
-      { _id: 1, text: 'You are in a dark tomb.' },
-      { _id: 2, text: 'The air is damp.' },
-      { _id: 3, text: 'A skeleton is here.' },
+  constructor(props) {
+    super(props);
+
+    this.consoleLogs = [
+      {_id: 1, text: 'You are in a dark tomb.'},
+      {_id: 2, text: 'The air is damp.'},
+      {_id: 3, text: 'A skeleton is here.'},
     ];
   }
 
   renderLogs() {
-    return this.getLogs().map((log) => (
+    return this.consoleLogs.map((log) => (
       <Log key={log._id} text={log.text} />
     ));
+  }
+
+  submitCommand() {
+    const newLog = {_id: Random.id(), text: 'You are in a dark tomb.'};
+    this.consoleLogs.push(newLog);
   }
 
   render() {
@@ -26,7 +32,10 @@ export default class App extends Component {
             {this.renderLogs()}
           </ul>
 
-          <input type="text" className="console-input"></input>
+          <input type="text"
+                 className="console-input"
+                 onSubmit={this.submitCommand}>
+          </input>
         </div>
       </div>
     );
