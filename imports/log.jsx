@@ -9,5 +9,5 @@ export default class Log extends Component {
 }
 
 Log.propTypes = {
-  text: PropTypes.object.isRequired,
+  text: PropTypes.string.isRequired,
 };
